@@ -25,12 +25,30 @@
 let userOption = prompt('You\'re weapon of choice?');
 userOption.toLowerCase();
 validationOfUserOption(userOption);
-console.log(userOption);
+//console.log(userOption);
 
-function validationOfUserOption(weapon){
+let computerOption = generationOfComputerOption();
+//console.log(computerOption);
+
+function validationOfUserOption(uWeapon){
     if((userOption != 'rock') && (userOption != 'paper') && (userOption != 'scissors')){
         alert('You didn\'t choose a valid weapon! Fear thee, thou I might smight thee!');
     }else{
         return true;
+    }
+}
+
+function generationOfComputerOption(){
+    let option = Math.floor((Math.random() * 11));
+    //console.log(option);
+    if(option <= 3){
+        let weaponIsRock = 'rock';
+        return weaponIsRock;
+    }else if(option <= 6){
+        let weaponIsPaper = 'paper';
+        return weaponIsPaper;
+    }else{
+        let weaponIsScissors = 'scissors';
+        return weaponIsScissors;
     }
 }
