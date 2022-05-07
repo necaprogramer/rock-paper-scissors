@@ -58,7 +58,7 @@ function generationOfComputerOption(){
 
 function whoWon(uOption, cOption){
     if(uOption == cOption){
-        console.log('It\'s a draw ladies and gentlemen!')
+        console.log('It\'s a draw ladies and gentlemen!');
     }else if((uOption == 'rock') && (cOption == 'paper')){
         console.log('The computer has won!');
     }else if((uOption == 'paper') && (cOption == 'scissors')){
