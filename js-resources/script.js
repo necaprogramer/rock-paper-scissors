@@ -63,14 +63,31 @@ function generationOfComputerOption(){
 
 function whoWon(uOption, cOption){
     if(uOption == cOption){
-        console.log('It\'s a draw ladies and gentlemen!');
+        return draw += 1;
     }else if((uOption == 'rock') && (cOption == 'paper')){
-        console.log('The computer has won!');
+        return computerWon += 1;
     }else if((uOption == 'paper') && (cOption == 'scissors')){
-        console.log('The computer has won!');
+        return computerWon += 1;
     }else if((uOption == 'scissors') && (cOption == 'rock')){
-        console.log('The computer has won!');
+        return computerWon += 1;
+    }else if(uOption == false){
+        return draw += 1;
     }else{
-        console.log('The user has won!');
+        return userWon += 1;
+    }
+}
+
+function game(){
+    while((userWon < 5) && (computerWon < 5)){
+        let userOption = generationOfUserOption();
+        
+        let computerOption = generationOfComputerOption();
+
+        whoWon(userOption, computerOption);
+    }
+    if(userWon == 5){
+        alert('Congradulations! You are truly mighty user!');
+    }else if(computerOption == 5){
+        alert('Huh, did you really think you could beat a computer!? MUHAHAHAHA!');
     }
 }
