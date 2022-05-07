@@ -32,8 +32,8 @@ let computerWon = 0;
 game();
 
 function generationOfUserOption(){
-    let option = prompt('You\'re weapon of choice?');
-    option.toLowerCase();
+    let weaponChoice = prompt('You\'re weapon of choice?');
+    let option = weaponChoice.toLowerCase();
     if((option != 'rock') && (option != 'paper') && (option != 'scissors')){
         alert('You didn\'t choose a valid weapon! Fear thee, thou I might smight thee!');
         return option = false;
