@@ -28,7 +28,10 @@ validationOfUserOption(userOption);
 //console.log(userOption);
 
 let computerOption = generationOfComputerOption();
-//console.log(computerOption);
+console.log(computerOption);
+
+let winnersCicle = whoWon(userOption, computerOption);
+console.log(winnersCicle);
 
 function validationOfUserOption(uWeapon){
     if((userOption != 'rock') && (userOption != 'paper') && (userOption != 'scissors')){
@@ -50,5 +53,19 @@ function generationOfComputerOption(){
     }else{
         let weaponIsScissors = 'scissors';
         return weaponIsScissors;
+    }
+}
+
+function whoWon(uOption, cOption){
+    if(uOption == cOption){
+        console.log('It\'s a draw ladies and gentlemen!')
+    }else if((uOption == 'rock') && (cOption == 'paper')){
+        console.log('The computer has won!');
+    }else if((uOption == 'paper') && (cOption == 'scissors')){
+        console.log('The computer has won!');
+    }else if((uOption == 'scissors') && (cOption == 'rock')){
+        console.log('The computer has won!');
+    }else{
+        console.log('The user has won!');
     }
 }
