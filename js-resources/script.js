@@ -29,20 +29,16 @@ let draw = 0;
 let userWon = 0;
 let computerWon = 0;
 
-let computerOption = generationOfComputerOption();
-console.log(computerOption);
-
-let winnersCicle = whoWon(userOption, computerOption);
-console.log(winnersCicle);
+game();
 
 function generationOfUserOption(){
-    let userOption = prompt('You\'re weapon of choice?');
-    userOption.toLowerCase();
-    if((userOption != 'rock') && (userOption != 'paper') && (userOption != 'scissors')){
+    let option = prompt('You\'re weapon of choice?');
+    option.toLowerCase();
+    if((option != 'rock') && (option != 'paper') && (option != 'scissors')){
         alert('You didn\'t choose a valid weapon! Fear thee, thou I might smight thee!');
-        return false;
+        return option = false;
     }else{
-        return true;
+        return option;
     }
 }
 
@@ -80,8 +76,10 @@ function whoWon(uOption, cOption){
 function game(){
     while((userWon < 5) && (computerWon < 5)){
         let userOption = generationOfUserOption();
+        console.log(userOption)
         
         let computerOption = generationOfComputerOption();
+        console.log(computerOption);
 
         whoWon(userOption, computerOption);
     }
