@@ -22,10 +22,12 @@
         9. Once userScore, or computerScore reaches five, the game is ended
 */
 
-let userOption = prompt('You\'re weapon of choice?');
-userOption.toLowerCase();
-validationOfUserOption(userOption);
+
 //console.log(userOption);
+
+let draw = 0;
+let userWon = 0;
+let computerWon = 0;
 
 let computerOption = generationOfComputerOption();
 console.log(computerOption);
@@ -33,9 +35,12 @@ console.log(computerOption);
 let winnersCicle = whoWon(userOption, computerOption);
 console.log(winnersCicle);
 
-function validationOfUserOption(uWeapon){
+function generationOfUserOption(){
+    let userOption = prompt('You\'re weapon of choice?');
+    userOption.toLowerCase();
     if((userOption != 'rock') && (userOption != 'paper') && (userOption != 'scissors')){
         alert('You didn\'t choose a valid weapon! Fear thee, thou I might smight thee!');
+        return false;
     }else{
         return true;
     }
