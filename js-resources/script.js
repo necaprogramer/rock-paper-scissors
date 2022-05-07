@@ -85,7 +85,7 @@ function game(){
     }
     if(userWon == 5){
         alert('Congradulations! You are truly mighty user!');
-    }else if(computerOption == 5){
+    }else if(computerWon == 5){
         alert('Huh, did you really think you could beat a computer!? MUHAHAHAHA!');
     }
 }
