@@ -25,30 +25,30 @@
 
 //console.log(userOption);
 
-let draw = 0;
-let userWon = 0;
-let computerWon = 0;
+let drawCount = 0;
+let userWonCount = 0;
+let computerWonCount = 0;
 
-game();
+playingGame();
 
 function generationOfUserOption(){
     let weaponChoice = prompt('You\'re weapon of choice?');
-    let option = weaponChoice.toLowerCase();
-    if((option != 'rock') && (option != 'paper') && (option != 'scissors')){
+    let optionMade = weaponChoice.toLowerCase();
+    if((optionMade != 'rock') && (optionMade != 'paper') && (optionMade != 'scissors')){
         alert('You didn\'t choose a valid weapon! Fear thee, thou I might smight thee!');
-        return option = false;
+        return optionMade = false;
     }else{
-        return option;
+        return optionMade;
     }
 }
 
 function generationOfComputerOption(){
-    let option = Math.floor((Math.random() * 11));
+    let optionGenerated = Math.floor((Math.random() * 11));
     //console.log(option);
-    if(option <= 3){
+    if(optionGenerated <= 3){
         let weaponIsRock = 'rock';
         return weaponIsRock;
-    }else if(option <= 6){
+    }else if(optionGenerated <= 6){
         let weaponIsPaper = 'paper';
         return weaponIsPaper;
     }else{
@@ -57,35 +57,35 @@ function generationOfComputerOption(){
     }
 }
 
-function whoWon(uOption, cOption){
-    if(uOption == cOption){
-        return draw += 1;
-    }else if((uOption == 'rock') && (cOption == 'paper')){
-        return computerWon += 1;
-    }else if((uOption == 'paper') && (cOption == 'scissors')){
-        return computerWon += 1;
-    }else if((uOption == 'scissors') && (cOption == 'rock')){
-        return computerWon += 1;
-    }else if(uOption == false){
-        return draw += 1;
+function accessingScore(userOption, computerOption){
+    if(userOption == computerOption){
+        return drawCount += 1;
+    }else if((userOption == 'rock') && (computerOption == 'paper')){
+        return computerWonCount += 1;
+    }else if((userOption == 'paper') && (computerOption == 'scissors')){
+        return computerWonCount += 1;
+    }else if((userOption == 'scissors') && (computerOption == 'rock')){
+        return computerWonCount += 1;
+    }else if(userOption == false){
+        return drawCount += 1;
     }else{
-        return userWon += 1;
+        return userWonCount += 1;
     }
 }
 
-function game(){
-    while((userWon < 5) && (computerWon < 5)){
+function playingGame(){
+    while((userWonCount < 5) && (computerWonCount < 5)){
         let userOption = generationOfUserOption();
         console.log(userOption)
         
         let computerOption = generationOfComputerOption();
         console.log(computerOption);
 
-        whoWon(userOption, computerOption);
+        accessingScore(userOption, computerOption);
     }
-    if(userWon == 5){
+    if(userWonCount == 5){
         alert('Congradulations! You are truly mighty user!');
-    }else if(computerWon == 5){
+    }else if(computerWonCount == 5){
         alert('Huh, did you really think you could beat a computer!? MUHAHAHAHA!');
     }
 }
