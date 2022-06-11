@@ -29,19 +29,6 @@ let drawCount = 0;
 let userWonCount = 0;
 let computerWonCount = 0;
 
-playingGame();
-
-function generationOfUserOption(){
-    let weaponChoice = prompt('You\'re weapon of choice?');
-    let optionMade = weaponChoice.toLowerCase();
-    if((optionMade != 'rock') && (optionMade != 'paper') && (optionMade != 'scissors')){
-        alert('You didn\'t choose a valid weapon! Fear thee, thou I might smight thee!');
-        return optionMade = false;
-    }else{
-        return optionMade;
-    }
-}
-
 function generationOfComputerOption(){
     let optionGenerated = Math.floor((Math.random() * 11));
     //console.log(option);
@@ -73,19 +60,12 @@ function accessingScore(userOption, computerOption){
     }
 }
 
-function playingGame(){
-    while((userWonCount < 5) && (computerWonCount < 5)){
-        let userOption = generationOfUserOption();
-        console.log(userOption)
+function playRound(){
+    let button = document.querySelectorAll('button');
+    
+    let playerSelection;
+    
+    button.forEach((e) => {
         
-        let computerOption = generationOfComputerOption();
-        console.log(computerOption);
-
-        accessingScore(userOption, computerOption);
-    }
-    if(userWonCount == 5){
-        alert('Congradulations! You are truly mighty user!');
-    }else if(computerWonCount == 5){
-        alert('Huh, did you really think you could beat a computer!? MUHAHAHAHA!');
-    }
+    });
 }
