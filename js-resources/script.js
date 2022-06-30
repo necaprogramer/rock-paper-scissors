@@ -29,6 +29,14 @@ let drawCount = 0;
 let userWonCount = 0;
 let computerWonCount = 0;
 
+function userOption(){
+    let rock = document.getElementById('rock');
+    let paper = document.getElementById('paper');
+    let scissors = document.getElementById('scissors');
+
+    
+}
+
 function generationOfComputerOption(){
     let optionGenerated = Math.floor((Math.random() * 11));
     //console.log(option);
@@ -60,12 +68,17 @@ function accessingScore(userOption, computerOption){
     }
 }
 
-function playRound(){
-    let button = document.querySelectorAll('button');
-    
-    let playerSelection;
-    
-    button.forEach((e) => {
+function playingGame(){
+    while((userWonCount < 5) && (computerWonCount < 5)){
         
-    });
+        let computerOption = generationOfComputerOption();
+        console.log(computerOption);
+
+        accessingScore(userOption, computerOption);
+    }
+    if(userWonCount == 5){
+        alert('Congradulations! You are truly mighty user!');
+    }else if(computerWonCount == 5){
+        alert('Huh, did you really think you could beat a computer!? MUHAHAHAHA!');
+    }
 }
