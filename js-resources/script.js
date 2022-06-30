@@ -44,20 +44,29 @@ let drawCount = 0;
 let userWonCount = 0;
 let computerWonCount = 0;
 
-playRound();
+let outcome = document.getElementById('outcome');
+let outcomeDisplay = document.createElement('p');
+outcome.appendChild(outcomeDisplay);
 
-function messageDisplay(){
-    
-}
+playRound();
 
 function playRound(){
     let rock = document.getElementById('rock');
     let paper = document.getElementById('paper');
     let scissors = document.getElementById('scissors');
 
-    rock.addEventListener('click', () => {accessingScore('rock', generationOfComputerOption())});
-    paper.addEventListener('click', () => {accessingScore('paper', generationOfComputerOption())});
-    scissors.addEventListener('click', () => {accessingScore('scissors', generationOfComputerOption())});
+    rock.addEventListener('click', () => {
+        accessingScore('rock', generationOfComputerOption());
+        outcome.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+    });
+    paper.addEventListener('click', () => {
+        accessingScore('paper', generationOfComputerOption());
+        outcome.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+    });
+    scissors.addEventListener('click', () => {
+        accessingScore('scissors', generationOfComputerOption());
+        outcome.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+    });
 }
 
 function generationOfComputerOption(){
