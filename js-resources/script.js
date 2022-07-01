@@ -51,7 +51,28 @@ outcome.appendChild(currentResult);
 
 let winnerAnnouncement = document.createElement('b');
 outcome.appendChild(winnerAnnouncement);
+
+let textToAppear = document.getElementById('text-to-appear');
+
+let welcomeMessage = `If you think you can beat a computer, come and play a game of rock-paper-scissors`;
 /* SETTING NEEDED HTML ELEMENTS IN DOM */
+
+for(let i = 0; i < welcomeMessage.length; i++){
+    console.log(welcomeMessage[i]);
+}
+
+appereanceOfText(textToAppear, welcomeMessage, 100);
+
+function appereanceOfText(text, message, speed){
+    let i = 0;
+    let interval = setInterval(() => {
+        text.innerHTML += message.charAt(i);
+        i++;
+        if(i > message.length){
+            clearInterval(interval);
+        }
+    }, speed)
+};
 
 playRound();
 

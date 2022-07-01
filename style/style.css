@@ -5,7 +5,7 @@ body{
 body > #message{
     display: flex;
     justify-content: space-around;
-    color: cornflowerblue;
+    color: firebrick;
 }
 
 body > #gameplay-container{
