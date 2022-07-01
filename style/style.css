@@ -44,18 +44,6 @@ body > #gameplay-container > button:active{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-body > #gameplay-container > button::after{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100px;
-    font-size: large;
-    background-color: aliceblue;
-    transition-duration: 0.4s;
-    border: 1px solid black;
-}
-
 body > #outcome{
     display: flex;
     justify-content: center;
