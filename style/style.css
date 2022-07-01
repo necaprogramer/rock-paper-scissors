@@ -17,9 +17,23 @@ body > #gameplay-container{
 }
 
 body > #gameplay-container > button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100px;
     width: 100px;
+    font-size: large;
     background-color: aliceblue;
+    transition-duration: 0.4s;
+    border: 1px solid black;
+}
+
+body > #gameplay-container > button:hover{
+    flex-grow: 0.01;
+    background-color: firebrick;
+    cursor: pointer;
+    border: 1px transparent wheat;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 body > #outcome{

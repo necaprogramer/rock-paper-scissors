@@ -57,7 +57,7 @@ let targetText = document.getElementById('text-to-appear');
 let welcomeMessage = `If you think you can beat a computer, come and play a game of rock-paper-scissors`;
 /* SETTING NEEDED HTML ELEMENTS IN DOM */
 
-appereanceOfText(targetText, welcomeMessage, 100);
+appereanceOfText(targetText, welcomeMessage, 50);
 
 function appereanceOfText(textTarget, message, speed){
     let i = 0;
