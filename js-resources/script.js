@@ -49,24 +49,20 @@ let outcome = document.getElementById('outcome');
 let currentResult = document.createElement('p');
 outcome.appendChild(currentResult);
 
-let winnerAnnouncement = document.createElement('b');
+let winnerAnnouncement = document.createElement('p');
 outcome.appendChild(winnerAnnouncement);
 
-let textToAppear = document.getElementById('text-to-appear');
+let targetText = document.getElementById('text-to-appear');
 
 let welcomeMessage = `If you think you can beat a computer, come and play a game of rock-paper-scissors`;
 /* SETTING NEEDED HTML ELEMENTS IN DOM */
 
-for(let i = 0; i < welcomeMessage.length; i++){
-    console.log(welcomeMessage[i]);
-}
+appereanceOfText(targetText, welcomeMessage, 100);
 
-appereanceOfText(textToAppear, welcomeMessage, 100);
-
-function appereanceOfText(text, message, speed){
+function appereanceOfText(textTarget, message, speed){
     let i = 0;
     let interval = setInterval(() => {
-        text.innerHTML += message.charAt(i);
+        textTarget.innerHTML += message.charAt(i);
         i++;
         if(i > message.length){
             clearInterval(interval);
@@ -79,10 +75,12 @@ playRound();
 function annoucingOfWinner(){
     if(userWonCount == 5){
         outcome.removeChild(currentResult);
-        return winnerAnnouncement.innerText = 'Oh thou, user you are truly mighty!';
+        let winnerText = `Oh thou, user you are truly mighty!`;
+        return appereanceOfText(winnerAnnouncement, winnerText, 100);
     }else if(computerWonCount == 5){
         outcome.removeChild(currentResult);
-        return winnerAnnouncement.innerText = 'MUHAHAHA! You really thought you could beat a computer!?';
+        let winnerText = `MUHAHAHA! You really thought you could beat a computer!?`;
+        return appereanceOfText(winnerAnnouncement, winnerText, 100);
     }
 }
 
