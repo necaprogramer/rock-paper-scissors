@@ -38,63 +38,87 @@
 */
 
 
-//console.log(userOption);
 
-let drawCount = 0;
-let userWonCount = 0;
-let computerWonCount = 0;
 
-let outcome = document.getElementById('outcome');
-let outcomeDisplay = document.createElement('p');
-outcome.appendChild(outcomeDisplay);
 
+function settingVariables() {
+    let drawCount = 0;
+    let userWonCount = 0;
+    let computerWonCount = 0;
+
+    let outcome = document.getElementById('outcome');
+    let currentResult = document.createElement('p');
+    outcome.appendChild(currentResult);
+
+    let winnerAnnouncement = document.createElement('b');
+    outcome.appendChild(winnerAnnouncement);
+}
+
+settingVariables();
 playRound();
 
-function playRound(){
+function annoucingOfWinner() {
+    if (userWonCount == 5) {
+        winnerAnnouncement.innerText = 'Oh thou, user you are truly mighty!';
+        outcome.removeChild(currentResult);
+    } else if (computerWonCount == 5) {
+        winnerAnnouncement.innerText = 'MUHAHAHA! You really thought you could beat a computer!?';
+        outcome.removeChild(currentResult);
+    }
+}
+
+function displayOfResults() {
+    currentResult.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+}
+
+function playRound() {
     let rock = document.getElementById('rock');
     let paper = document.getElementById('paper');
     let scissors = document.getElementById('scissors');
 
     rock.addEventListener('click', () => {
         accessingScore('rock', generationOfComputerOption());
-        outcome.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+        displayOfResults();
+        annoucingOfWinner();
     });
     paper.addEventListener('click', () => {
         accessingScore('paper', generationOfComputerOption());
-        outcome.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+        displayOfResults();
+        annoucingOfWinner();
     });
     scissors.addEventListener('click', () => {
         accessingScore('scissors', generationOfComputerOption());
-        outcome.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
+        displayOfResults();
+        annoucingOfWinner();
     });
 }
 
-function generationOfComputerOption(){
+function generationOfComputerOption() {
     let optionGenerated = Math.floor((Math.random() * 11));
-    if(optionGenerated <= 3){
+    if (optionGenerated <= 3) {
         let weaponIsRock = 'rock';
         return weaponIsRock;
-    }else if(optionGenerated <= 6){
+    } else if (optionGenerated <= 6) {
         let weaponIsPaper = 'paper';
         return weaponIsPaper;
-    }else{
+    } else {
         let weaponIsScissors = 'scissors';
         return weaponIsScissors;
     }
 }
 
-function accessingScore(userOption, computerOption){
-    if(userOption == computerOption){
-        return drawCount += 1;
-    }else if((userOption == 'rock') && (computerOption == 'paper')){
-        return computerWonCount += 1;
-    }else if((userOption == 'paper') && (computerOption == 'scissors')){
-        return computerWonCount += 1;
-    }else if((userOption == 'scissors') && (computerOption == 'rock')){
-        return computerWonCount += 1;
-    }else if(userOption == false){
-        return drawCount += 1;
-    }else{
-        return userWonCount += 1;
+function accessingScore(userOption, computerOption) {
+    if (userOption == computerOption) {
+        drawCount += 1;
+    } else if ((userOption == 'rock') && (computerOption == 'paper')) {
+        computerWonCount += 1;
+    } else if ((userOption == 'paper') && (computerOption == 'scissors')) {
+        computerWonCount += 1;
+    } else if ((userOption == 'scissors') && (computerOption == 'rock')) {
+        computerWonCount += 1;
+    } else if (userOption == false) {
+        drawCount += 1;
+    } else {
+        userWonCount += 1;
     }
 }
