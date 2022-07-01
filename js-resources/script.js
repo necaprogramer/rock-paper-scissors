@@ -38,40 +38,38 @@
 */
 
 
+/* SETTING NEEDED VARIABLES */
+let drawCount = 0;
+let userWonCount = 0;
+let computerWonCount = 0;
+/* SETTING NEEDED VARIABLES */
 
+/* SETTING NEEDED HTML ELEMENTS IN DOM */
+let outcome = document.getElementById('outcome');
+let currentResult = document.createElement('p');
+outcome.appendChild(currentResult);
 
+let winnerAnnouncement = document.createElement('b');
+outcome.appendChild(winnerAnnouncement);
+/* SETTING NEEDED HTML ELEMENTS IN DOM */
 
-function settingVariables() {
-    let drawCount = 0;
-    let userWonCount = 0;
-    let computerWonCount = 0;
-
-    let outcome = document.getElementById('outcome');
-    let currentResult = document.createElement('p');
-    outcome.appendChild(currentResult);
-
-    let winnerAnnouncement = document.createElement('b');
-    outcome.appendChild(winnerAnnouncement);
-}
-
-settingVariables();
 playRound();
 
-function annoucingOfWinner() {
-    if (userWonCount == 5) {
+function annoucingOfWinner(){
+    if(userWonCount == 5){
         winnerAnnouncement.innerText = 'Oh thou, user you are truly mighty!';
         outcome.removeChild(currentResult);
-    } else if (computerWonCount == 5) {
+    }else if(computerWonCount == 5){
         winnerAnnouncement.innerText = 'MUHAHAHA! You really thought you could beat a computer!?';
         outcome.removeChild(currentResult);
     }
 }
 
-function displayOfResults() {
+function displayOfResults(){
     currentResult.innerText = `The current score is: Draw: ${drawCount}, User: ${userWonCount}, Computer: ${computerWonCount}`;
 }
 
-function playRound() {
+function playRound(){
     let rock = document.getElementById('rock');
     let paper = document.getElementById('paper');
     let scissors = document.getElementById('scissors');
@@ -93,32 +91,32 @@ function playRound() {
     });
 }
 
-function generationOfComputerOption() {
+function generationOfComputerOption(){
     let optionGenerated = Math.floor((Math.random() * 11));
-    if (optionGenerated <= 3) {
+    if(optionGenerated <= 3){
         let weaponIsRock = 'rock';
         return weaponIsRock;
-    } else if (optionGenerated <= 6) {
+    }else if(optionGenerated <= 6){
         let weaponIsPaper = 'paper';
         return weaponIsPaper;
-    } else {
+    }else{
         let weaponIsScissors = 'scissors';
         return weaponIsScissors;
     }
 }
 
-function accessingScore(userOption, computerOption) {
-    if (userOption == computerOption) {
+function accessingScore(userOption, computerOption){
+    if(userOption == computerOption){
         drawCount += 1;
-    } else if ((userOption == 'rock') && (computerOption == 'paper')) {
+    }else if((userOption == 'rock') && (computerOption == 'paper')){
         computerWonCount += 1;
-    } else if ((userOption == 'paper') && (computerOption == 'scissors')) {
+    }else if((userOption == 'paper') && (computerOption == 'scissors')){
         computerWonCount += 1;
-    } else if ((userOption == 'scissors') && (computerOption == 'rock')) {
+    }else if((userOption == 'scissors') && (computerOption == 'rock')){
         computerWonCount += 1;
-    } else if (userOption == false) {
+    }else if(userOption == false){
         drawCount += 1;
-    } else {
+    }else{
         userWonCount += 1;
     }
 }
