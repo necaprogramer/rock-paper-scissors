@@ -57,11 +57,11 @@ playRound();
 
 function annoucingOfWinner(){
     if(userWonCount == 5){
-        winnerAnnouncement.innerText = 'Oh thou, user you are truly mighty!';
         outcome.removeChild(currentResult);
+        return winnerAnnouncement.innerText = 'Oh thou, user you are truly mighty!';
     }else if(computerWonCount == 5){
-        winnerAnnouncement.innerText = 'MUHAHAHA! You really thought you could beat a computer!?';
         outcome.removeChild(currentResult);
+        return winnerAnnouncement.innerText = 'MUHAHAHA! You really thought you could beat a computer!?';
     }
 }
 
