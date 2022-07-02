@@ -55,6 +55,10 @@ outcome.appendChild(winnerAnnouncement);
 let targetText = document.getElementById('text-to-appear');
 
 let welcomeMessage = `If you think you can beat a computer, come and play a game of rock-paper-scissors`;
+
+let finishAudio = document.getElementById('finish');
+let userAudio = document.getElementById('user');
+let computerAudio = document.getElementById('computer');
 /* SETTING NEEDED HTML ELEMENTS IN DOM */
 
 appereanceOfText(targetText, welcomeMessage, 50);
@@ -74,10 +78,14 @@ playRound();
 
 function annoucingOfWinner(){
     if(userWonCount == 5){
+        userAudio.pause();
+        finishAudio.play();
         outcome.removeChild(currentResult);
         let winnerText = `Oh thou, user you are truly mighty!`;
         return appereanceOfText(winnerAnnouncement, winnerText, 100);
     }else if(computerWonCount == 5){
+        computerAudio.pause();
+        finishAudio.play();
         outcome.removeChild(currentResult);
         let winnerText = `MUHAHAHA! You really thought you could beat a computer!?`;
         return appereanceOfText(winnerAnnouncement, winnerText, 100);
@@ -128,14 +136,18 @@ function accessingScore(userOption, computerOption){
     if(userOption == computerOption){
         drawCount += 1;
     }else if((userOption == 'rock') && (computerOption == 'paper')){
+        computerAudio.play();
         computerWonCount += 1;
     }else if((userOption == 'paper') && (computerOption == 'scissors')){
+        computerAudio.play();
         computerWonCount += 1;
     }else if((userOption == 'scissors') && (computerOption == 'rock')){
+        computerAudio.play();
         computerWonCount += 1;
     }else if(userOption == false){
         drawCount += 1;
     }else{
+        userAudio.play();
         userWonCount += 1;
     }
 }
