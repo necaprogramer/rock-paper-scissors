@@ -64,6 +64,7 @@ let userAudio = document.getElementById('user');
 let computerAudio = document.getElementById('computer');
 /* SETTING NEEDED HTML ELEMENTS IN DOM */
 
+/* WELCOME MESSAGE */
 appereanceOfText(targetText, welcomeMessage, 50);
 
 function appereanceOfText(textTarget, message, speed){
@@ -76,7 +77,9 @@ function appereanceOfText(textTarget, message, speed){
         }
     }, speed)
 };
+/* WELCOME MESSAGE */
 
+/* ROCK-PAPER-SCISSORS */
 playRound();
 
 function annoucingOfWinner(){
@@ -107,19 +110,13 @@ function playRound(){
     let scissors = document.getElementById('scissors');
 
     rock.addEventListener('click', () => {
-        accessingScore('rock', generationOfComputerOption());
-        displayOfResults();
-        annoucingOfWinner();
+        checkForGamePlay('rock');
     });
     paper.addEventListener('click', () => {
-        accessingScore('paper', generationOfComputerOption());
-        displayOfResults();
-        annoucingOfWinner();
+        checkForGamePlay('paper');
     });
     scissors.addEventListener('click', () => {
-        accessingScore('scissors', generationOfComputerOption());
-        displayOfResults();
-        annoucingOfWinner();
+        checkForGamePlay('scissors');
     });
 }
 
@@ -184,6 +181,16 @@ function accessingScore(userOption, computerOption){
     }
 }
 
+function checkForGamePlay(userOption){
+    if((userWonCount != 5) && (computerWonCount != 5)){
+        accessingScore(userOption, generationOfComputerOption());
+        displayOfResults();
+        annoucingOfWinner();
+    }else{
+        return false;
+    }
+}
+
 function stopAudio(){
     if(userAudio.paused){
         computerAudio.pause();
@@ -191,3 +198,4 @@ function stopAudio(){
         userAudio.pause();
     }
 }
+/* ROCK-PAPER-SCISSORS */
