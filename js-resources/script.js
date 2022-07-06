@@ -49,7 +49,7 @@ let outcome = document.getElementById('outcome');
 let currentResult = document.createElement('p');
 outcome.appendChild(currentResult);
 
-let winnerAnnouncement = document.createElement('p');
+let winnerAnnouncement = document.createElement('h1');
 outcome.appendChild(winnerAnnouncement);
 
 let targetText = document.getElementById('text-to-appear');
@@ -82,16 +82,18 @@ playRound();
 function annoucingOfWinner(){
     if(userWonCount == 5){
         userAudio.pause();
+        computerAudio.pause();
         finishAudio.play();
         outcome.removeChild(currentResult);
-        let winnerText = `Oh thou, user you are truly mighty!`;
-        return appereanceOfText(winnerAnnouncement, winnerText, 100);
+        let winnerText = `\n Oh thou, user you are truly mighty!`;
+        appereanceOfText(winnerAnnouncement, winnerText, 100);
     }else if(computerWonCount == 5){
+        userAudio.pause();
         computerAudio.pause();
         finishAudio.play();
         outcome.removeChild(currentResult);
         let winnerText = `MUHAHAHA! You really thought you could beat a computer!?`;
-        return appereanceOfText(winnerAnnouncement, winnerText, 100);
+        appereanceOfText(winnerAnnouncement, winnerText, 100);
     }
 }
 
@@ -136,26 +138,52 @@ function generationOfComputerOption(){
 }
 
 function accessingScore(userOption, computerOption){
+    let draw = `Wow! It's a draw!`;
+    let compWon = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
+    let compWonLastRound = `In the last round, the computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
+    let userWon = `Wow, you've got skills! You chose ${userOption}, while the computer chose ${computerOption}`;
+    let userWonLastRound = `In the last round, you trashed the computer! It chose ${computerOption}, while you chose ${userOption}`;
+
     if(userOption == computerOption){
-        whoWonTheRound.innerText = `Wow! It's a draw!`;
+        whoWonTheRound.innerText = draw;
         drawCount += 1;
     }else if((userOption == 'rock') && (computerOption == 'paper')){
+        userAudio.pause();
+        computerAudio.pause();
         computerAudio.play();
-        whoWonTheRound.innerText = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
+        whoWonTheRound.innerText = compWon;
         computerWonCount += 1;
+        if(computerWonCount == 5){
+            whoWonTheRound.innerText = compWonLastRound;
+        }
     }else if((userOption == 'paper') && (computerOption == 'scissors')){
+        userAudio.pause();
+        computerAudio.pause();
         computerAudio.play();
-        whoWonTheRound.innerText = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
+        whoWonTheRound.innerText = compWon;
         computerWonCount += 1;
+        if(computerWonCount == 5){
+            whoWonTheRound.innerText = compWonLastRound;
+        }
     }else if((userOption == 'scissors') && (computerOption == 'rock')){
+        userAudio.pause();
+        computerAudio.pause();
         computerAudio.play();
-        whoWonTheRound.innerText = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
+        whoWonTheRound.innerText = compWon;
         computerWonCount += 1;
+        if(computerWonCount == 5){
+            whoWonTheRound.innerText = compWonLastRound;
+        }
     }else if(userOption == false){
         drawCount += 1;
     }else{
+        userAudio.pause();
+        computerAudio.pause();
         userAudio.play();
-        whoWonTheRound.innerText = `Wow, you've got skills! You chose ${userOption}, while the computer chose ${computerOption}`;
+        whoWonTheRound.innerText = userWon;
         userWonCount += 1;
+        if(userWonCount == 5){
+            whoWonTheRound.innerText = userWonLastRound;
+        }
     }
 }
