@@ -56,6 +56,9 @@ let targetText = document.getElementById('text-to-appear');
 
 let welcomeMessage = `If you think you can beat a computer, come and play a game of rock-paper-scissors`;
 
+let whoWonTheRound = document.createElement('h3');
+outcome.appendChild(whoWonTheRound);
+
 let finishAudio = document.getElementById('finish');
 let userAudio = document.getElementById('user');
 let computerAudio = document.getElementById('computer');
@@ -134,20 +137,25 @@ function generationOfComputerOption(){
 
 function accessingScore(userOption, computerOption){
     if(userOption == computerOption){
+        whoWonTheRound.innerText = `Wow! It's a draw!`;
         drawCount += 1;
     }else if((userOption == 'rock') && (computerOption == 'paper')){
         computerAudio.play();
+        whoWonTheRound.innerText = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
         computerWonCount += 1;
     }else if((userOption == 'paper') && (computerOption == 'scissors')){
         computerAudio.play();
+        whoWonTheRound.innerText = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
         computerWonCount += 1;
     }else if((userOption == 'scissors') && (computerOption == 'rock')){
         computerAudio.play();
+        whoWonTheRound.innerText = `The computer trashed you! It chose ${computerOption}, while you chose ${userOption}`;
         computerWonCount += 1;
     }else if(userOption == false){
         drawCount += 1;
     }else{
         userAudio.play();
+        whoWonTheRound.innerText = `Wow, you've got skills! You chose ${userOption}, while the computer chose ${computerOption}`;
         userWonCount += 1;
     }
 }

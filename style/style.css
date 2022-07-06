@@ -46,8 +46,8 @@ body > #gameplay-container > button:active{
 
 body > #outcome{
     display: flex;
-    justify-content: center;
-    font-size: 18px;
+    flex-direction: column;
+    align-items: center;
     color: firebrick;
     font-family: 'Poller One', cursive;
 }
