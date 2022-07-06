@@ -148,8 +148,7 @@ function accessingScore(userOption, computerOption){
         whoWonTheRound.innerText = draw;
         drawCount += 1;
     }else if((userOption == 'rock') && (computerOption == 'paper')){
-        userAudio.pause();
-        computerAudio.pause();
+        stopAudio();
         computerAudio.play();
         whoWonTheRound.innerText = compWon;
         computerWonCount += 1;
@@ -157,8 +156,7 @@ function accessingScore(userOption, computerOption){
             whoWonTheRound.innerText = compWonLastRound;
         }
     }else if((userOption == 'paper') && (computerOption == 'scissors')){
-        userAudio.pause();
-        computerAudio.pause();
+        stopAudio();
         computerAudio.play();
         whoWonTheRound.innerText = compWon;
         computerWonCount += 1;
@@ -166,8 +164,7 @@ function accessingScore(userOption, computerOption){
             whoWonTheRound.innerText = compWonLastRound;
         }
     }else if((userOption == 'scissors') && (computerOption == 'rock')){
-        userAudio.pause();
-        computerAudio.pause();
+        stopAudio();
         computerAudio.play();
         whoWonTheRound.innerText = compWon;
         computerWonCount += 1;
@@ -177,13 +174,20 @@ function accessingScore(userOption, computerOption){
     }else if(userOption == false){
         drawCount += 1;
     }else{
-        userAudio.pause();
-        computerAudio.pause();
+        stopAudio();
         userAudio.play();
         whoWonTheRound.innerText = userWon;
         userWonCount += 1;
         if(userWonCount == 5){
             whoWonTheRound.innerText = userWonLastRound;
         }
+    }
+}
+
+function stopAudio(){
+    if(userAudio.paused){
+        computerAudio.pause();
+    }else if(computerAudio.paused){
+        userAudio.pause();
     }
 }
