@@ -62,6 +62,9 @@ outcome.appendChild(whoWonTheRound);
 let finishAudio = document.getElementById('finish');
 let userAudio = document.getElementById('user');
 let computerAudio = document.getElementById('computer');
+
+let reset = document.getElementById('reset');
+let resetBtn = document.createElement('button');
 /* SETTING NEEDED HTML ELEMENTS IN DOM */
 
 /* WELCOME MESSAGE */
@@ -83,20 +86,19 @@ function appereanceOfText(textTarget, message, speed){
 playRound();
 
 function annoucingOfWinner(){
+    let winnerUser = `Oh thou, user you are truly mighty!`;
+    let winnerComputer = `MUHAHAHA! You really thought you could beat a computer!?`;
     if(userWonCount == 5){
         userAudio.pause();
         computerAudio.pause();
         finishAudio.play();
-        outcome.removeChild(currentResult);
-        let winnerText = `\n Oh thou, user you are truly mighty!`;
-        appereanceOfText(winnerAnnouncement, winnerText, 100);
+        appereanceOfText(winnerAnnouncement, winnerUser, 100);
     }else if(computerWonCount == 5){
         userAudio.pause();
         computerAudio.pause();
         finishAudio.play();
-        outcome.removeChild(currentResult);
         let winnerText = `MUHAHAHA! You really thought you could beat a computer!?`;
-        appereanceOfText(winnerAnnouncement, winnerText, 100);
+        appereanceOfText(winnerAnnouncement, winnerComputer, 100);
     }
 }
 
@@ -110,13 +112,13 @@ function playRound(){
     let scissors = document.getElementById('scissors');
 
     rock.addEventListener('click', () => {
-        checkForGamePlay('rock');
+        checkGamePlay('rock');
     });
     paper.addEventListener('click', () => {
-        checkForGamePlay('paper');
+        checkGamePlay('paper');
     });
     scissors.addEventListener('click', () => {
-        checkForGamePlay('scissors');
+        checkGamePlay('scissors');
     });
 }
 
@@ -181,14 +183,26 @@ function accessingScore(userOption, computerOption){
     }
 }
 
-function checkForGamePlay(userOption){
+function checkGamePlay(userOption){
     if((userWonCount != 5) && (computerWonCount != 5)){
         accessingScore(userOption, generationOfComputerOption());
         displayOfResults();
         annoucingOfWinner();
-    }else{
-        return false;
     }
+    if((userWonCount == 5) || (computerWonCount == 5)){
+        playAgain();
+    }
+}
+
+function playAgain(){
+    reset.appendChild(resetBtn);
+    resetBtn.innerText = `Play again?`;
+    resetBtn.addEventListener('click', () =>{
+        userWonCount = 0;
+        computerWonCount = 0;
+        drawCount = 0;
+        winnerAnnouncement.innerHTML = '';
+    });
 }
 
 function stopAudio(){
